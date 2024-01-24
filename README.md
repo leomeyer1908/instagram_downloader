@@ -1,9 +1,7 @@
 # Instagram Downloader
 The purpose of this project was to create a simple Instagram video downloader in Python that used only built-in libraries for me to understand how Instagram video downloaders work.
 
-This code was derived by reverse engineering the yt-dlp Instagram extractor.
-
-The program can be used by calling "python main.py <video_url>"
+The program can be used by calling "python3 instagram_dl.py <video_url> [--username USERNAME] [--password PASSWORD]"
 
 # Explanation
 The program works by calling on Instagram's private API, graphQL, which is typically only accessed by the front-end of Instagram's website and is used to retrieve information from the back-end, including the downloadable video url<br>
@@ -24,4 +22,6 @@ After that, we can now make a GET request to the URL, and if we read the respons
 In the general_info dict, we can retrieve specfically just the information from the media and store it in its own variable. In the media dict, we can now get the video_url, which is the url which contains the data from the video and we can download from directly. The media dict also contains many other useful information, some of which I left on a comment. <br>
 Now that the code acquired the media_url, we are ready to make the final request to download the actual video. Like before, the header used is the same one that the website's front-end uses when loading up the video to the webpage.<br>
 We then make a GET request to video_url, and we save it to an mp4 file by using open(filename, "wb"), which writes the bytes of the response onto the file created, thus creating a video file with the contents of the downloaded video. <br>
-The filename is arbitrarily chosen based on the video url and the current time the video is downloaded.
+The filename is arbitrarily chosen based on the video url and the current time the video is downloaded.<br>
+
+I will add an in-depth explanation of how the log-in part works in the future.
